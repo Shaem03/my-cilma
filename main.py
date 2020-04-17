@@ -1,17 +1,26 @@
-from flask import Flask
+from flask import Flask, request
 from rateImdb import getImdbRating
 from rateRotten import getRottenRating
-import json
+from getMovie import searchMovies
 
 application = Flask(__name__)
 rest_server_port = 5000
 
 
 @application.route("/silma-rating", methods=['GET'])
-def health():
-    imdb = getImdbRating("the dark knight rises")
-    rotten = getRottenRating("the dark knight rises")
-    return json.dumps({'Movie': 'The Dark Knight Rises', 'imdb': imdb, 'rotten': rotten}), 200, {
+def cilmaRating():
+    search_input = "titanic"
+    search_input = request.args.get('name', default="", type=str)
+    tmdb_response = searchMovies(search_input)
+    imdb = getImdbRating(tmdb_response['title'])
+    rotten = getRottenRating(tmdb_response['title'])
+    rating_response = {
+        'imdb_rating': imdb,
+        'rotten_tomatoes': rotten
+    }
+    tmdb_response.update(rating_response)
+    print(tmdb_response)
+    return tmdb_response, 200, {
         'Content-Type': 'application/json'}
 
 
