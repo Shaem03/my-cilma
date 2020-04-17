@@ -22,6 +22,9 @@ def cilmaRating():
     # tmdb_response.update(rating_response)
     try:
         response_detail = movieResult(search_input)
+        tmdb_response = searchMovies(response_detail['title'])
+        response_detail.update(tmdb_response)
+
         return response_detail, 200, {
             'Content-Type': 'application/json'}
     except Exception as e:

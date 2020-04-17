@@ -7,8 +7,9 @@ def movieResult(input_string):
 
     results = just_watch.search_for_item(query=input_string)
     for val in results['items']:
-        subscr_url = "NA"
-        provider_name = "NA"
+        hotstar_url = "NA"
+        netflix_url = "NA"
+        prime_url = "NA"
         rt_rating = "NA"
         imdb_rating = "NA"
         tmdb_rating = "NA"
@@ -16,11 +17,11 @@ def movieResult(input_string):
             if subs_url["urls"]['standard_web']:
                 url_provider = subs_url["urls"]['standard_web']
                 if "hotstar" in url_provider:
-                    provider_name = "Hotstar"
+                    hotstar_url = subs_url["urls"]['standard_web']
                 elif "netflix" in url_provider:
-                    provider_name = "Netflix"
+                    netflix_url = subs_url["urls"]['standard_web']
                 elif "primevideo" in url_provider:
-                    provider_name = "Prime Video"
+                    prime_url = subs_url["urls"]['standard_web']
 
         for ratings in val['scoring']:
 
@@ -37,14 +38,14 @@ def movieResult(input_string):
             "title": val['title'],
             "original_release_year": val['original_release_year'],
             "poster_url": ''.join(poster_url),
-            "subscr_url": url_provider,
-            "provider_name": provider_name,
+            "hotstar_url": hotstar_url,
+            "netflix_url": netflix_url,
+            "prime_url":prime_url,
             "rt_rating": rt_rating,
             "imdb_rating": imdb_rating,
             "tmdb_rating": tmdb_rating
         }
         break
-
     return match_result
 
 
