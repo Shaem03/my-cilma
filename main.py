@@ -1,7 +1,5 @@
 from flask import Flask, request
-from rateImdb import getImdbRating
-from rateRotten import getRottenRating
-from getMovie import searchMovies
+
 from availability_check import movieResult
 
 application = Flask(__name__)

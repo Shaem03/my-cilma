@@ -1,7 +1,8 @@
-from imdb import IMDb
 import urllib.request
+
 from bs4 import BeautifulSoup
 from flask import Flask
+from imdb import IMDb
 
 application = Flask(__name__)
 rest_server_port = 5000
