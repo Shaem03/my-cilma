@@ -1,6 +1,7 @@
 from flask import Flask, request
 
 from availability_check import movieResult
+from getMovie import searchMovies
 
 application = Flask(__name__)
 rest_server_port = 5000
