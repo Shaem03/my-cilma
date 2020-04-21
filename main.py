@@ -1,6 +1,5 @@
 from flask import Flask, request
-from getMovie import searchMovies
-from availability_check import movieResult
+from getMovie import MyCilma
 
 application = Flask(__name__)
 rest_server_port = 5000
@@ -10,9 +9,7 @@ rest_server_port = 5000
 def cilmaRating():
     search_input = request.args.get('name', default="", type=str)
     try:
-        response_detail = movieResult(search_input)
-        tmdb_response = searchMovies(response_detail['title'])
-        response_detail.update(tmdb_response)
+        response_detail = MyCilma.movieResult(search_input)
 
         return response_detail, 200, {
             'Content-Type': 'application/json'}
