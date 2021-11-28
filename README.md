@@ -1,9 +1,14 @@
-# my-cilma - Find review and description for movies and tv shows
+# my-cilma
+Fetch review and description for movies and tv shows
 
-## Activate env and Install requirements
+### Activate env and Install requirements
 
 ``` pip install -r requirements.txt ```
 
-## Run
+### Run
 
 ``` python main.py ```
+
+### Endpoint
+
+``` https://localhost:5000/silma-rating ````
