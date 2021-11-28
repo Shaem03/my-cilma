@@ -11,4 +11,4 @@ Fetch review and description for movies and tv shows
 
 ### Endpoint
 
-``` https://localhost:5000/silma-rating ````
+https://localhost:5000/silma-rating
